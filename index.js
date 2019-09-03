@@ -27,6 +27,9 @@ function observeProperty(obj, key, value) {
 }
 
 const data = {
-  name: 'wstreet'
+  name: 'wstreet',
+  men: {
+    sex: 1
+  }
 }
 observe(data)
