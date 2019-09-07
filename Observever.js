@@ -1,5 +1,6 @@
 
 function observe(value, asRootData) {
+  console.log(value)
   if (!value || typeof value !== 'object') {
     return;
   }
@@ -69,13 +70,16 @@ class Dep {
   }
 
   // 添加订阅者
-  addSub() {
-
+  addSub(sub) {
+    this.subs.push(sub)
   }
 
-  // 一处订阅者
-  removeSub() {
-
+  // 移除订阅者
+  removeSub(sub) {
+    const index = this.subs.indexOf(sub)
+    if (index !== -1) {
+      this.subs.splice(index, 1)
+    }
   }
 
 
@@ -90,6 +94,6 @@ class Dep {
 
   // 
   depend() {
-
+    Dep.target.addDep(this)
   }
 }
