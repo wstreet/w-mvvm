@@ -1,5 +1,5 @@
 
-function observe(value, asRootData) {
+export default function observe(value, asRootData) {
   console.log(value)
   if (!value || typeof value !== 'object') {
     return;
@@ -61,7 +61,7 @@ let uid = 0
 
 
 // 依赖类
-class Dep {
+export class Dep {
   target = null
 
   constructor() {

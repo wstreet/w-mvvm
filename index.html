@@ -2,27 +2,33 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="./Compile.js"></script>
-    <script src="./Observever.js"></script>
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./lib/mvvm.js"></script>
+  <title>Document</title>
 </head>
 
-<body>
-    <div id="test">
-        <h2 x-html="a"></h2>
-        <p>{{ a }}</p>
-    </div>
+<div id="test">
+  <input type="text" x-model="a">
+  <p>{{ b }}</p>
+  <p x-html="a" x-on:click="testToggle"></p>
+</div>
 </body>
-
 <script>
-    var data = {
-        a: 'hello'
+  console.log(MVVM)
+  var vm = new MVVM({
+    el: '#test',
+    data: {
+      a: 'hehe',
+      b: 'haha'
+    },
+    methods: {
+      testToggle: function () {
+        console.log(123)
+      }
     }
-    observe(data)
-    new Compile('#test', data)
+  });
 </script>
 
 </html>
